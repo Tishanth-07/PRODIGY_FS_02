@@ -2,12 +2,14 @@
 import EmployeeForm from "@/components/EmployeeForm";
 import { useAuth } from "@/context/AuthContext";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 
-export default function AddEmployeePage() {
+export default function EditEmployeePage() {
   const { isAuthenticated } = useAuth();
   const router = useRouter();
+  const params = useParams();
+  const employeeId = params?.id as string;
 
   useEffect(() => {
     if (!isAuthenticated) router.push("/login");
@@ -38,14 +40,14 @@ export default function AddEmployeePage() {
             Back to Dashboard
           </Link>
           <h1 className="text-4xl font-bold text-slate-800 mb-2">
-            Add New Employee
+            Edit Employee
           </h1>
           <p className="text-slate-600 text-lg">
-            Enter employee details to add them to your team
+            Update employee information and details
           </p>
         </div>
 
-        <EmployeeForm />
+        <EmployeeForm employeeId={employeeId} />
       </div>
     </div>
   );

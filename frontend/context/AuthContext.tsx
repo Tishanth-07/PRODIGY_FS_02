@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     router.push("/login");
   };
 
-  // ✅ Check if user is logged in when app loads
+  //  Check if user is logged in when app loads
   useEffect(() => {
     const checkAuth = async () => {
       try {
